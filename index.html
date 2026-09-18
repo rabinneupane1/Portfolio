@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,12 @@
 
     <title>Rabin Neupane | Digital Marketing & SEO</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -15,149 +20,570 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f8fc;
-            color: #222;
-            line-height: 1.6;
+        :root {
+            --bg: #080b14;
+            --bg2: #0d1220;
+            --card: rgba(255,255,255,0.055);
+            --border: rgba(255,255,255,0.10);
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --primary: #7c3aed;
+            --secondary: #06b6d4;
+            --gradient: linear-gradient(135deg, #7c3aed, #06b6d4);
         }
 
-        /* Navbar */
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.22;
+        }
+
+        .blob.one {
+            width: 350px;
+            height: 350px;
+            background: #7c3aed;
+            top: 5%;
+            left: -100px;
+        }
+
+        .blob.two {
+            width: 300px;
+            height: 300px;
+            background: #06b6d4;
+            right: -80px;
+            top: 45%;
+        }
+
+        .blob.three {
+            width: 250px;
+            height: 250px;
+            background: #ec4899;
+            left: 30%;
+            bottom: -100px;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
         nav {
-            background: #111827;
-            color: white;
-            padding: 18px 8%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+
+            padding: 18px 7%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+
+            background: rgba(8,11,20,0.72);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
         }
 
         .logo {
-            font-size: 23px;
-            font-weight: bold;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #8b5cf6;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
-            gap: 25px;
+            display: flex;
+            gap: 30px;
         }
 
         nav ul li a {
-            color: white;
+            color: #cbd5e1;
             text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
         }
 
         nav ul li a:hover {
-            color: #38bdf8;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #111827, #1e3a8a);
             color: white;
         }
 
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
+        .nav-button {
+            padding: 9px 17px;
+            border-radius: 30px;
+            background: var(--gradient);
+            color: white !important;
         }
 
-        .hero h1 span {
-            color: #38bdf8;
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 7% 90px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 15px;
+            border: 1px solid rgba(124,58,237,0.35);
+            background: rgba(124,58,237,0.10);
+            border-radius: 50px;
+
+            color: #c4b5fd;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 12px #22c55e;
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.02;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #a78bfa,
+                #22d3ee,
+                #a78bfa
+            );
+
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+
+            animation: gradientMove 4s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            to {
+                background-position: 200% center;
+            }
         }
 
         .hero h2 {
-            font-size: 25px;
-            font-weight: normal;
-            margin-bottom: 15px;
+            font-size: 23px;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 20px;
         }
 
         .hero p {
             max-width: 650px;
-            margin: auto;
-            color: #dbeafe;
-            font-size: 18px;
-            margin-bottom: 30px;
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #38bdf8;
-            color: #111827;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 23px;
+            border-radius: 8px;
+
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 14px;
+
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #7dd3fc;
+        .primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124,58,237,0.25);
         }
 
-        /* Sections */
-        section {
-            padding: 80px 8%;
+        .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(124,58,237,0.35);
         }
 
-        section h2 {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 40px;
+        .outline {
+            border: 1px solid var(--border);
+            color: white;
+            background: rgba(255,255,255,0.03);
         }
 
-        /* About */
-        .about {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            color: #555;
-            font-size: 18px;
+        .outline:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-3px);
         }
 
-        /* Skills */
-        .skills {
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-wrapper {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .skill {
-            background: white;
-            padding: 15px 25px;
-            border-radius: 8px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        .profile-card {
+            width: 310px;
+            height: 380px;
+
+            position: relative;
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(124,58,237,0.20),
+                    rgba(6,182,212,0.08)
+                );
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45);
+
+            transform: rotate(3deg);
+            transition: 0.5s;
         }
 
-        /* Learning */
-        .learning {
-            background: #eef6ff;
+        .profile-card:hover {
+            transform: rotate(0deg) translateY(-8px);
         }
 
-        .learning-box {
-            max-width: 900px;
-            margin: auto;
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+
+            margin: 15px auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--gradient);
+
+            font-family: "Space Grotesk";
+            font-size: 55px;
+            font-weight: 700;
+
+            box-shadow:
+                0 0 0 12px rgba(124,58,237,0.08),
+                0 0 60px rgba(124,58,237,0.3);
+        }
+
+        .profile-card h3 {
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: #121827;
+            border: 1px solid var(--border);
+            padding: 11px 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .float-one {
+            left: -40px;
+            top: 70px;
+        }
+
+        .float-two {
+            right: -35px;
+            bottom: 75px;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+
+            padding: 20px;
+
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .stat h3 {
+            font-family: "Space Grotesk";
+            font-size: 30px;
+            background: var(--gradient);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .stat p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section.content-section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 100px 7%;
+        }
+
+        .section-heading {
+            margin-bottom: 50px;
+        }
+
+        .section-heading small {
+            color: #8b5cf6;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .section-heading h2 {
+            font-family: "Space Grotesk";
+            font-size: 42px;
+            letter-spacing: -1.5px;
+            margin-top: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 600px;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .highlight {
+            color: white;
+            font-weight: 600;
+        }
+
+        .about-box {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: var(--card);
+        }
+
+        .about-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .check {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: #cbd5e1;
+            margin: 13px 0;
+            font-size: 14px;
+        }
+
+        .check span {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(34,197,94,0.12);
+            color: #4ade80;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
             gap: 20px;
         }
 
-        .learning-card {
-            background: white;
+        .skill-card {
             padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            background: var(--card);
+
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124,58,237,0.5);
+        }
+
+        .skill-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .skill-top strong {
+            font-size: 15px;
+        }
+
+        .skill-top span {
+            color: #a78bfa;
+            font-size: 13px;
+        }
+
+        .progress {
+            height: 7px;
+            border-radius: 20px;
+            background: #1e293b;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            background: var(--gradient);
+        }
+
+        /* =========================
+           LEARNING CARDS
+        ========================= */
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+        }
+
+        .learning-card {
+            padding: 28px 22px;
+
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 16px;
+
+            transition: 0.3s;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-7px);
+            background: rgba(255,255,255,0.075);
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: rgba(124,58,237,0.13);
+            font-size: 22px;
+
+            margin-bottom: 20px;
         }
 
         .learning-card h3 {
@@ -165,82 +591,274 @@
         }
 
         .learning-card p {
-            color: #666;
+            color: var(--muted);
+            font-size: 13px;
         }
 
-        /* Projects */
+        /* =========================
+           PROJECTS
+        ========================= */
+
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
         }
 
         .project {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+
+            padding: 30px;
+
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: var(--card);
+
+            transition: 0.4s;
+        }
+
+        .project::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #7c3aed;
+            filter: blur(80px);
+            opacity: 0;
+            right: -60px;
+            top: -60px;
+            transition: 0.4s;
+        }
+
+        .project:hover::before {
+            opacity: 0.25;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124,58,237,0.45);
+        }
+
+        .project-number {
+            color: #8b5cf6;
+            font-family: monospace;
+            font-size: 13px;
+            margin-bottom: 20px;
         }
 
         .project h3 {
-            margin-bottom: 10px;
+            font-size: 21px;
+            margin-bottom: 12px;
         }
 
         .project p {
-            color: #666;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
-        /* Contact */
-        .contact {
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            background: #171d2c;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: #c4b5fd;
+            font-size: 11px;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            max-width: 1050px;
+            margin: 80px auto;
+
+            padding: 70px 40px;
+
             text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.18),
+                    rgba(6,182,212,0.10)
+                );
+
+            border: 1px solid rgba(124,58,237,0.25);
         }
 
-        .contact p {
-            margin: 10px 0;
+        .cta h2 {
+            font-family: "Space Grotesk";
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
-        .contact a {
-            color: inherit;
+        .cta p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: auto auto 28px;
         }
 
-        /* Footer */
-        footer {
-            background: #111827;
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .contact-card {
+            padding: 25px;
+
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 14px;
+
+            text-decoration: none;
             color: white;
-            text-align: center;
-            padding: 20px;
+
+            transition: 0.3s;
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: #7c3aed;
+        }
+
+        .contact-card small {
+            color: var(--muted);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 30px 7%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .hero-container,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-wrapper {
+                margin-top: 30px;
+            }
+
+            .learning-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
 
             nav {
-                flex-direction: column;
-                gap: 15px;
+                padding: 15px 5%;
             }
 
             nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
+            }
+
+            .hero {
+                padding: 130px 6% 70px;
             }
 
             .hero h1 {
-                font-size: 40px;
+                letter-spacing: -2px;
             }
 
-            .hero h2 {
-                font-size: 21px;
+            section.content-section {
+                padding: 70px 6%;
+            }
+
+            .skills-grid,
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                margin: 0 6% 50px;
+                padding: 10px;
+            }
+
+            .stat h3 {
+                font-size: 23px;
+            }
+
+            .stat p {
+                font-size: 10px;
+            }
+
+            .profile-card {
+                width: 280px;
+                height: 350px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .section-heading h2,
+            .cta h2 {
+                font-size: 32px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
+    <!-- Background -->
+    <div class="background">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="blob three"></div>
+    </div>
+
+
+    <!-- Navigation -->
     <nav>
-        <div class="logo">Rabin Neupane</div>
+
+        <div class="logo">
+            Rabin<span>.</span>
+        </div>
 
         <ul>
             <li><a href="#home">Home</a></li>
@@ -248,176 +866,481 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#learning">Learning</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="#contact" class="nav-button">Contact</a>
+            </li>
         </ul>
+
     </nav>
 
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero" id="home">
-        <div>
 
-            <h1>Hi, I'm <span>Rabin Neupane</span></h1>
+        <div class="hero-container">
 
-            <h2>Digital Marketing & SEO Learner</h2>
+            <div>
+
+                <div class="badge">
+                    <span class="dot"></span>
+                    Currently Learning & Growing
+                </div>
+
+                <h1>
+                    Rabin
+                    <span class="gradient-text">
+                        Neupane
+                    </span>
+                </h1>
+
+                <h2>
+                    Digital Marketing & SEO Learner
+                </h2>
+
+                <p>
+                    Exploring the world of SEO, digital marketing,
+                    content strategy and online growth. I'm building
+                    my skills through continuous learning, research
+                    and hands-on practice.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="btn primary">
+                        Explore My Work →
+                    </a>
+
+                    <a href="#contact" class="btn outline">
+                        Let's Connect
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="profile-wrapper">
+
+                <div class="profile-card">
+
+                    <div class="floating-card float-one">
+                        🔎 SEO
+                    </div>
+
+                    <div class="floating-card float-two">
+                        📈 Digital Growth
+                    </div>
+
+                    <div class="profile-circle">
+                        RN
+                    </div>
+
+                    <h3>
+                        Rabin Neupane
+                    </h3>
+
+                    <p>
+                        Digital Marketing & SEO
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="stat">
+            <h3>SEO</h3>
+            <p>Focus Area</p>
+        </div>
+
+        <div class="stat">
+            <h3>4+</h3>
+            <p>Learning Areas</p>
+        </div>
+
+        <div class="stat">
+            <h3>∞</h3>
+            <p>Curiosity to Learn</p>
+        </div>
+
+    </div>
+
+
+    <!-- ABOUT -->
+    <section class="content-section" id="about">
+
+        <div class="section-heading">
+
+            <small>01 / ABOUT ME</small>
+
+            <h2>
+                Learning. Practicing. Growing.
+            </h2>
 
             <p>
-                I'm currently learning Digital Marketing and Search Engine
-                Optimization, exploring how businesses can grow their online
-                presence through effective digital strategies.
+                A curious learner exploring how digital platforms
+                connect businesses with the right audience.
             </p>
 
-            <a href="#about" class="btn">
-                Explore My Journey
-            </a>
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I'm <span class="highlight">Rabin Neupane</span>,
+                    currently learning Digital Marketing and Search
+                    Engine Optimization.
+                </p>
+
+                <p>
+                    My interest lies in understanding how search engines,
+                    websites, content and social platforms work together
+                    to create a stronger online presence.
+                </p>
+
+                <p>
+                    I'm building my knowledge through practical exercises,
+                    research and personal projects, with the goal of
+                    developing strong real-world digital marketing skills.
+                </p>
+
+            </div>
+
+
+            <div class="about-box">
+
+                <h3>
+                    What I'm Focused On
+                </h3>
+
+                <div class="check">
+                    <span>✓</span>
+                    Search Engine Optimization
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    Keyword Research
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    Content Strategy
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    Digital Marketing
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    Social Media Marketing
+                </div>
+
+            </div>
 
         </div>
+
     </section>
 
 
-    <!-- About -->
-    <section id="about">
+    <!-- SKILLS -->
+    <section class="content-section" id="skills">
 
-        <h2>About Me</h2>
+        <div class="section-heading">
 
-        <div class="about">
+            <small>02 / SKILLS</small>
+
+            <h2>
+                Skills I'm Building
+            </h2>
 
             <p>
-                I'm Rabin Neupane, a Digital Marketing and SEO learner
-                passionate about understanding how websites, content and
-                search engines work together to build a strong online presence.
+                These are the areas I'm currently studying and
+                developing through practice.
             </p>
 
-            <br>
+        </div>
+
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>SEO</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>Keyword Research</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>Content Marketing</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 60%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>Social Media Marketing</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 55%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>Google Analytics</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 50%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-top">
+                    <strong>Google Search Console</strong>
+                    <span>Learning</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 55%;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING -->
+    <section class="content-section" id="learning">
+
+        <div class="section-heading">
+
+            <small>03 / LEARNING JOURNEY</small>
+
+            <h2>
+                What I'm Exploring
+            </h2>
+
+        </div>
+
+
+        <div class="learning-grid">
+
+            <div class="learning-card">
+
+                <div class="icon">
+                    🔍
+                </div>
+
+                <h3>SEO</h3>
+
+                <p>
+                    Learning on-page SEO, technical SEO,
+                    optimization and search engine fundamentals.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <div class="icon">
+                    🎯
+                </div>
+
+                <h3>Keywords</h3>
+
+                <p>
+                    Understanding search intent, keyword research
+                    and how people discover content online.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <div class="icon">
+                    ✍️
+                </div>
+
+                <h3>Content</h3>
+
+                <p>
+                    Exploring content planning and strategies
+                    designed around audience needs.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <div class="icon">
+                    📱
+                </div>
+
+                <h3>Social Media</h3>
+
+                <p>
+                    Learning how brands use social platforms
+                    to communicate and engage with audiences.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+
+        <div class="section-heading">
+
+            <small>04 / PROJECTS</small>
+
+            <h2>
+                Practice & Projects
+            </h2>
 
             <p>
-                I'm continuously developing my skills through learning,
-                practice and personal projects. My goal is to gain practical
-                experience and grow into a skilled digital marketing
-                professional.
+                A collection of areas where I'm applying what
+                I'm learning.
             </p>
 
         </div>
 
-    </section>
-
-
-    <!-- Skills -->
-    <section id="skills">
-
-        <h2>Skills I'm Learning</h2>
-
-        <div class="skills">
-
-            <div class="skill">SEO</div>
-            <div class="skill">Keyword Research</div>
-            <div class="skill">Content Marketing</div>
-            <div class="skill">On-Page SEO</div>
-            <div class="skill">Off-Page SEO</div>
-            <div class="skill">Social Media Marketing</div>
-            <div class="skill">Google Analytics</div>
-            <div class="skill">Google Search Console</div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Learning Journey -->
-    <section class="learning" id="learning">
-
-        <h2>My Learning Journey</h2>
-
-        <div class="learning-box">
-
-            <div class="learning-card">
-
-                <h3>🔍 SEO</h3>
-
-                <p>
-                    Learning keyword research, on-page SEO,
-                    technical SEO and link building.
-                </p>
-
-            </div>
-
-            <div class="learning-card">
-
-                <h3>📊 Analytics</h3>
-
-                <p>
-                    Learning how to understand website traffic,
-                    user behavior and performance data.
-                </p>
-
-            </div>
-
-            <div class="learning-card">
-
-                <h3>✍️ Content</h3>
-
-                <p>
-                    Exploring content strategies that help
-                    websites attract and engage audiences.
-                </p>
-
-            </div>
-
-            <div class="learning-card">
-
-                <h3>📱 Social Media</h3>
-
-                <p>
-                    Learning how businesses can use social media
-                    to reach and engage their audience.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Projects -->
-    <section id="projects">
-
-        <h2>My Projects</h2>
 
         <div class="projects">
 
             <div class="project">
 
-                <h3>SEO Practice Project</h3>
+                <div class="project-number">
+                    PROJECT / 01
+                </div>
+
+                <h3>
+                    SEO Practice
+                </h3>
 
                 <p>
-                    A personal project where I practice keyword
-                    research, on-page optimization and SEO techniques.
+                    Practicing keyword research, on-page
+                    optimization and basic SEO techniques
+                    through personal exercises.
                 </p>
+
+                <div class="tags">
+                    <span class="tag">SEO</span>
+                    <span class="tag">Keywords</span>
+                    <span class="tag">On-Page</span>
+                </div>
 
             </div>
 
 
             <div class="project">
 
-                <h3>Content Research</h3>
+                <div class="project-number">
+                    PROJECT / 02
+                </div>
+
+                <h3>
+                    Content Research
+                </h3>
 
                 <p>
-                    Researching topics and creating content ideas
-                    based on search intent and keyword research.
+                    Researching topics, search intent and
+                    content opportunities to understand what
+                    audiences are looking for.
                 </p>
+
+                <div class="tags">
+                    <span class="tag">Research</span>
+                    <span class="tag">Content</span>
+                    <span class="tag">Strategy</span>
+                </div>
 
             </div>
 
 
             <div class="project">
 
-                <h3>Digital Marketing Practice</h3>
+                <div class="project-number">
+                    PROJECT / 03
+                </div>
+
+                <h3>
+                    Digital Marketing Practice
+                </h3>
 
                 <p>
-                    Exploring different digital marketing channels
-                    and learning how online campaigns are planned.
+                    Exploring different digital marketing
+                    channels and learning how online campaigns
+                    are planned and executed.
                 </p>
+
+                <div class="tags">
+                    <span class="tag">Marketing</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Digital</span>
+                </div>
 
             </div>
 
@@ -426,40 +1349,70 @@
     </section>
 
 
-    <!-- Contact -->
-    <section id="contact">
+    <!-- CTA -->
+    <div class="cta">
 
-        <h2>Let's Connect</h2>
+        <h2>
+            Let's Connect & Learn
+        </h2>
 
-        <div class="contact">
+        <p>
+            Interested in digital marketing, SEO or online growth?
+            I'm always open to connecting, learning and sharing ideas.
+        </p>
+
+        <a
+            href="mailto:rabinneupane241@gmail.com"
+            class="btn primary"
+        >
+            Start a Conversation →
+        </a>
+
+    </div>
+
+
+    <!-- CONTACT -->
+    <section class="content-section" id="contact">
+
+        <div class="section-heading">
+
+            <small>05 / CONTACT</small>
+
+            <h2>
+                Get In Touch
+            </h2>
 
             <p>
-                I'm always interested in learning, connecting
-                and discussing Digital Marketing and SEO.
+                Feel free to reach out for a conversation,
+                collaboration or simply to connect.
             </p>
 
-            <br>
+        </div>
 
-            <p>
-                Email:
-                <a href="mailto:rabinneupane241@gmail.com">
-                    rabinneupane241@gmail.com
-                </a>
-            </p>
 
-            <p>
-                Phone:
-                <a href="tel:9860117102">
-                    9860117102
-                </a>
-            </p>
+        <div class="contact-grid">
 
-            <p>Location: Nepal</p>
+            <a
+                href="mailto:rabinneupane241@gmail.com"
+                class="contact-card"
+            >
 
-            <br>
+                <small>Email</small>
 
-            <a href="mailto:rabinneupane241@gmail.com" class="btn">
-                Contact Me
+                rabinneupane241@gmail.com
+
+            </a>
+
+
+            <a
+                href="tel:9860117102"
+                class="contact-card"
+            >
+
+                <small>Phone</small>
+
+                9860117102
+
             </a>
 
         </div>
@@ -467,16 +1420,16 @@
     </section>
 
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
 
         <p>
-            © 2026 Rabin Neupane. All Rights Reserved.
+            © 2026 Rabin Neupane · All rights reserved.
         </p>
 
     </footer>
 
+
 </body>
 </html>
 ```
-
