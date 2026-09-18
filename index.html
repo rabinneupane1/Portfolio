@@ -8,9 +8,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --primary: #6c4df6;
+            --primary-dark: #5134d7;
+            --secondary: #8b5cf6;
+            --text: #17152b;
+            --muted: #6f6b80;
+            --light: #f7f7fc;
+            --border: #e9e7f2;
+            --white: #ffffff;
+            --green: #20b486;
+        }
 
         * {
             margin: 0;
@@ -19,303 +31,208 @@
             scroll-behavior: smooth;
         }
 
-        :root {
-            --bg: #080b14;
-            --bg2: #0d1220;
-            --card: rgba(255,255,255,0.055);
-            --border: rgba(255,255,255,0.10);
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --primary: #7c3aed;
-            --secondary: #06b6d4;
-            --gradient: linear-gradient(135deg, #7c3aed, #06b6d4);
-        }
-
         body {
-            font-family: "Inter", sans-serif;
-            background: var(--bg);
+            font-family: "DM Sans", sans-serif;
             color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
+            background: #fff;
+            line-height: 1.6;
         }
 
-        /* =========================
-           BACKGROUND
-        ========================= */
-
-        .background {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.22;
+        .container {
+            width: min(1150px, 92%);
+            margin: auto;
         }
 
-        .blob.one {
-            width: 350px;
-            height: 350px;
-            background: #7c3aed;
-            top: 5%;
-            left: -100px;
-        }
-
-        .blob.two {
-            width: 300px;
-            height: 300px;
-            background: #06b6d4;
-            right: -80px;
-            top: 45%;
-        }
-
-        .blob.three {
-            width: 250px;
-            height: 250px;
-            background: #ec4899;
-            left: 30%;
-            bottom: -100px;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* ================= NAVBAR ================= */
 
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 999;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1100px, 92%);
+            z-index: 1000;
 
-            padding: 18px 7%;
+            background: rgba(255,255,255,.86);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(230,227,242,.9);
+            box-shadow: 0 12px 40px rgba(54,42,110,.08);
+
+            border-radius: 18px;
+        }
+
+        .nav-inner {
+            height: 68px;
+            padding: 0 24px;
 
             display: flex;
-            justify-content: space-between;
             align-items: center;
-
-            background: rgba(8,11,20,0.72);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            justify-content: space-between;
         }
 
         .logo {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -1px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
         }
 
         .logo span {
-            color: #8b5cf6;
+            color: var(--primary);
         }
 
-        nav ul {
-            list-style: none;
+        .nav-links {
             display: flex;
             gap: 30px;
+            list-style: none;
         }
 
-        nav ul li a {
-            color: #cbd5e1;
-            text-decoration: none;
+        .nav-links a {
             font-size: 14px;
-            font-weight: 500;
-            transition: 0.3s;
+            font-weight: 600;
+            color: #625e73;
+            transition: .25s;
         }
 
-        nav ul li a:hover {
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: var(--primary);
             color: white;
+            padding: 11px 19px;
+            border-radius: 11px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .25s;
         }
 
-        .nav-button {
-            padding: 9px 17px;
-            border-radius: 30px;
-            background: var(--gradient);
-            color: white !important;
+        .nav-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* ================= HERO ================= */
 
         .hero {
             min-height: 100vh;
-            padding: 150px 7% 90px;
+            padding: 150px 0 90px;
+            position: relative;
+            overflow: hidden;
 
-            display: flex;
-            align-items: center;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(108,77,246,.12), transparent 28%),
+                radial-gradient(circle at 90% 20%, rgba(139,92,246,.10), transparent 28%),
+                linear-gradient(180deg, #fbfaff 0%, #ffffff 75%);
         }
 
-        .hero-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 70px;
+            grid-template-columns: 1.1fr .9fr;
             align-items: center;
+            gap: 70px;
         }
 
-        .badge {
+        .eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 9px;
+            gap: 8px;
 
-            padding: 8px 15px;
-            border: 1px solid rgba(124,58,237,0.35);
-            background: rgba(124,58,237,0.10);
-            border-radius: 50px;
+            background: #f0edff;
+            color: var(--primary);
+            border: 1px solid #e4ddff;
 
-            color: #c4b5fd;
+            padding: 8px 14px;
+            border-radius: 100px;
+
             font-size: 13px;
-            margin-bottom: 25px;
+            font-weight: 700;
+            margin-bottom: 22px;
         }
 
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
+            background: var(--green);
             border-radius: 50%;
-            background: #22c55e;
-            box-shadow: 0 0 12px #22c55e;
         }
 
-        .hero h1 {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(48px, 7vw, 82px);
-            line-height: 1.02;
-            letter-spacing: -4px;
+        h1 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(44px, 6vw, 72px);
+            line-height: 1.04;
+            letter-spacing: -3px;
             margin-bottom: 25px;
         }
 
-        .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #a78bfa,
-                #22d3ee,
-                #a78bfa
-            );
-
-            background-size: 200% auto;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-
-            animation: gradientMove 4s linear infinite;
+        h1 span {
+            color: var(--primary);
         }
 
-        @keyframes gradientMove {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .hero h2 {
-            font-size: 23px;
-            font-weight: 500;
-            color: #cbd5e1;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 650px;
+        .hero-text {
+            max-width: 600px;
             color: var(--muted);
-            font-size: 17px;
+            font-size: 18px;
+            line-height: 1.8;
             margin-bottom: 32px;
         }
 
-        .buttons {
+        .hero-buttons {
             display: flex;
-            gap: 14px;
+            gap: 13px;
             flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 13px 23px;
-            border-radius: 8px;
-
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-
-            transition: 0.3s;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: .25s;
+            display: inline-block;
         }
 
-        .primary {
-            background: var(--gradient);
+        .btn-primary {
             color: white;
-            box-shadow: 0 10px 30px rgba(124,58,237,0.25);
+            background: var(--primary);
+            box-shadow: 0 10px 25px rgba(108,77,246,.22);
         }
 
-        .primary:hover {
+        .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(124,58,237,0.35);
         }
 
-        .outline {
+        .btn-light {
+            background: white;
             border: 1px solid var(--border);
-            color: white;
-            background: rgba(255,255,255,0.03);
+            color: var(--text);
         }
 
-        .outline:hover {
-            border-color: #8b5cf6;
+        .btn-light:hover {
+            border-color: #cfc8f8;
             transform: translateY(-3px);
         }
 
-        /* =========================
-           PROFILE CARD
-        ========================= */
+        /* HERO CARD */
 
-        .profile-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-card {
-            width: 310px;
-            height: 380px;
-
+        .hero-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 32px;
+            box-shadow: 0 25px 70px rgba(54,42,110,.12);
             position: relative;
-
-            padding: 30px;
-
-            border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(124,58,237,0.20),
-                    rgba(6,182,212,0.08)
-                );
-
-            border: 1px solid rgba(255,255,255,0.12);
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.45);
-
-            transform: rotate(3deg);
-            transition: 0.5s;
-        }
-
-        .profile-card:hover {
-            transform: rotate(0deg) translateY(-8px);
         }
 
         .profile-circle {
-            width: 150px;
-            height: 150px;
-
-            margin: 15px auto 25px;
+            width: 115px;
+            height: 115px;
+            margin-bottom: 24px;
 
             border-radius: 50%;
 
@@ -323,123 +240,77 @@
             align-items: center;
             justify-content: center;
 
-            background: var(--gradient);
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 38px;
+            font-weight: 800;
 
-            font-family: "Space Grotesk";
-            font-size: 55px;
-            font-weight: 700;
+            color: var(--primary);
+            background: linear-gradient(135deg,#eeeaff,#f8f6ff);
 
-            box-shadow:
-                0 0 0 12px rgba(124,58,237,0.08),
-                0 0 60px rgba(124,58,237,0.3);
+            border: 7px solid #faf9ff;
+            box-shadow: 0 10px 35px rgba(108,77,246,.12);
         }
 
-        .profile-card h3 {
-            text-align: center;
+        .hero-card h3 {
+            font-family: "Plus Jakarta Sans", sans-serif;
             font-size: 25px;
             margin-bottom: 5px;
         }
 
-        .profile-card p {
-            text-align: center;
-            color: var(--muted);
-            font-size: 14px;
+        .role {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 25px;
         }
 
-        .floating-card {
-            position: absolute;
-            background: #121827;
-            border: 1px solid var(--border);
-            padding: 11px 15px;
-            border-radius: 10px;
-            font-size: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .float-one {
-            left: -40px;
-            top: 70px;
-        }
-
-        .float-two {
-            right: -35px;
-            bottom: 75px;
-        }
-
-        /* =========================
-           STATS
-        ========================= */
-
-        .stats {
-            max-width: 1100px;
-            margin: 0 auto 100px;
-
+        .mini-info {
             display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 15px;
-
-            padding: 20px;
-
-            background: rgba(255,255,255,0.035);
-            border: 1px solid var(--border);
-            border-radius: 18px;
+            gap: 12px;
         }
 
-        .stat {
-            text-align: center;
-            padding: 15px;
-        }
-
-        .stat h3 {
-            font-family: "Space Grotesk";
-            font-size: 30px;
-            background: var(--gradient);
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-        }
-
-        .stat p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section.content-section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 100px 7%;
-        }
-
-        .section-heading {
-            margin-bottom: 50px;
-        }
-
-        .section-heading small {
-            color: #8b5cf6;
-            font-family: monospace;
+        .mini-info div {
+            padding: 13px 15px;
+            background: #faf9fd;
+            border: 1px solid #efedf5;
+            border-radius: 12px;
             font-size: 14px;
+            color: #5e5a70;
         }
 
-        .section-heading h2 {
-            font-family: "Space Grotesk";
-            font-size: 42px;
+        /* ================= SECTIONS ================= */
+
+        section {
+            padding: 105px 0;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.15;
             letter-spacing: -1.5px;
-            margin-top: 8px;
+            margin-bottom: 16px;
         }
 
-        .section-heading p {
+        .section-subtitle {
+            max-width: 650px;
             color: var(--muted);
-            max-width: 600px;
-            margin-top: 10px;
+            font-size: 17px;
         }
 
-        /* =========================
-           ABOUT
-        ========================= */
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: var(--light);
+        }
 
         .about-grid {
             display: grid;
@@ -451,496 +322,581 @@
         .about-text p {
             color: var(--muted);
             margin-bottom: 18px;
+            font-size: 16px;
         }
 
-        .highlight {
-            color: white;
-            font-weight: 600;
+        .focus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .about-box {
-            padding: 30px;
-
+        .focus-card {
+            background: white;
             border: 1px solid var(--border);
             border-radius: 18px;
-
-            background: var(--card);
+            padding: 25px;
+            transition: .25s;
         }
 
-        .about-box h3 {
-            margin-bottom: 20px;
+        .focus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(54,42,110,.08);
         }
 
-        .check {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            color: #cbd5e1;
-            margin: 13px 0;
-            font-size: 14px;
-        }
+        .focus-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #f0edff;
+            color: var(--primary);
 
-        .check span {
-            width: 22px;
-            height: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(34,197,94,0.12);
-            color: #4ade80;
+
+            font-size: 20px;
+            margin-bottom: 15px;
         }
 
-        /* =========================
-           SKILLS
-        ========================= */
+        .focus-card h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .focus-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ================= SKILLS ================= */
 
         .skills-grid {
+            margin-top: 45px;
             display: grid;
             grid-template-columns: repeat(2,1fr);
-            gap: 20px;
+            gap: 18px;
         }
 
-        .skill-card {
-            padding: 25px;
-
-            border-radius: 15px;
+        .skill {
             border: 1px solid var(--border);
-            background: var(--card);
-
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(124,58,237,0.5);
+            padding: 22px;
+            border-radius: 18px;
+            background: white;
         }
 
         .skill-top {
             display: flex;
             justify-content: space-between;
             margin-bottom: 12px;
-        }
-
-        .skill-top strong {
-            font-size: 15px;
+            font-weight: 700;
         }
 
         .skill-top span {
-            color: #a78bfa;
-            font-size: 13px;
+            color: var(--primary);
         }
 
-        .progress {
+        .bar {
             height: 7px;
+            background: #efedf5;
             border-radius: 20px;
-            background: #1e293b;
             overflow: hidden;
         }
 
-        .progress-bar {
+        .bar span {
+            display: block;
             height: 100%;
-            border-radius: 20px;
-            background: var(--gradient);
+            background: linear-gradient(90deg,var(--primary),#a78bfa);
+            border-radius: inherit;
         }
 
-        /* =========================
-           LEARNING CARDS
-        ========================= */
+        /* ================= JOURNEY ================= */
 
-        .learning-grid {
+        .journey {
+            background: #faf9ff;
+        }
+
+        .journey-grid {
+            margin-top: 45px;
             display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 18px;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
         }
 
-        .learning-card {
-            padding: 28px 22px;
-
+        .journey-card {
+            background: white;
             border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 16px;
-
-            transition: 0.3s;
+            padding: 30px;
+            border-radius: 20px;
         }
 
-        .learning-card:hover {
-            transform: translateY(-7px);
-            background: rgba(255,255,255,0.075);
-        }
-
-        .icon {
-            width: 48px;
-            height: 48px;
+        .number {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #eeeaff;
+            color: var(--primary);
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border-radius: 12px;
-
-            background: rgba(124,58,237,0.13);
-            font-size: 22px;
-
-            margin-bottom: 20px;
+            font-weight: 800;
+            margin-bottom: 22px;
         }
 
-        .learning-card h3 {
-            margin-bottom: 10px;
+        .journey-card h3 {
+            margin-bottom: 9px;
+            font-family: "Plus Jakarta Sans", sans-serif;
         }
 
-        .learning-card p {
+        .journey-card p {
             color: var(--muted);
-            font-size: 13px;
+            font-size: 14px;
         }
 
-        /* =========================
-           PROJECTS
-        ========================= */
+        /* ================= PROJECTS ================= */
 
-        .projects {
+        .projects-grid {
+            margin-top: 45px;
             display: grid;
             grid-template-columns: repeat(3,1fr);
             gap: 20px;
         }
 
         .project {
-            position: relative;
-            overflow: hidden;
-
-            padding: 30px;
-
-            border-radius: 18px;
             border: 1px solid var(--border);
-            background: var(--card);
-
-            transition: 0.4s;
-        }
-
-        .project::before {
-            content: "";
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: #7c3aed;
-            filter: blur(80px);
-            opacity: 0;
-            right: -60px;
-            top: -60px;
-            transition: 0.4s;
-        }
-
-        .project:hover::before {
-            opacity: 0.25;
+            border-radius: 22px;
+            padding: 28px;
+            background: white;
+            transition: .3s;
         }
 
         .project:hover {
-            transform: translateY(-8px);
-            border-color: rgba(124,58,237,0.45);
+            transform: translateY(-7px);
+            box-shadow: 0 18px 45px rgba(54,42,110,.09);
         }
 
-        .project-number {
-            color: #8b5cf6;
-            font-family: monospace;
-            font-size: 13px;
-            margin-bottom: 20px;
+        .project-top {
+            height: 145px;
+            border-radius: 16px;
+            background: linear-gradient(135deg,#eeeaff,#f8f6ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            margin-bottom: 24px;
         }
 
         .project h3 {
-            font-size: 21px;
-            margin-bottom: 12px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            margin-bottom: 9px;
         }
 
         .project p {
             color: var(--muted);
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .tags {
             display: flex;
-            flex-wrap: wrap;
             gap: 7px;
+            flex-wrap: wrap;
         }
 
         .tag {
-            padding: 5px 10px;
-            background: #171d2c;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: #c4b5fd;
+            background: #f4f2ff;
+            color: var(--primary);
+            padding: 6px 10px;
+            border-radius: 7px;
             font-size: 11px;
+            font-weight: 700;
         }
 
-        /* =========================
-           CTA
-        ========================= */
+        /* ================= CONTACT ================= */
 
-        .cta {
-            max-width: 1050px;
-            margin: 80px auto;
-
-            padding: 70px 40px;
-
-            text-align: center;
-
-            border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(124,58,237,0.18),
-                    rgba(6,182,212,0.10)
-                );
-
-            border: 1px solid rgba(124,58,237,0.25);
+        .contact {
+            background: var(--light);
         }
-
-        .cta h2 {
-            font-family: "Space Grotesk";
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            color: var(--muted);
-            max-width: 600px;
-            margin: auto auto 28px;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
 
         .contact-grid {
+            margin-top: 45px;
+
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .contact-info {
+            background: linear-gradient(145deg,#6c4df6,#8065f7);
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(108,77,246,.18);
+        }
+
+        .contact-info h3 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .contact-info > p {
+            color: rgba(255,255,255,.78);
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            margin-bottom: 22px;
+        }
+
+        .contact-item small {
+            display: block;
+            color: rgba(255,255,255,.65);
+            margin-bottom: 3px;
+        }
+
+        .contact-item strong {
+            font-size: 15px;
+        }
+
+        .contact-form {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 38px;
+        }
+
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 16px;
         }
 
-        .contact-card {
-            padding: 25px;
-
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 14px;
-
-            text-decoration: none;
-            color: white;
-
-            transition: 0.3s;
+        .field {
+            margin-bottom: 18px;
         }
 
-        .contact-card:hover {
-            transform: translateY(-4px);
-            border-color: #7c3aed;
-        }
-
-        .contact-card small {
-            color: var(--muted);
+        label {
             display: block;
-            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #e4e1ec;
+            background: #fbfaff;
+
+            padding: 14px 15px;
+            border-radius: 11px;
+
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+
+            transition: .2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(108,77,246,.07);
+        }
+
+        textarea {
+            min-height: 135px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        /* ================= FOOTER ================= */
 
         footer {
-            padding: 30px 7%;
+            padding: 28px 0;
             border-top: 1px solid var(--border);
             text-align: center;
             color: var(--muted);
             font-size: 13px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        /* ================= RESPONSIVE ================= */
 
-        @media (max-width: 900px) {
+        @media(max-width: 900px) {
 
-            .hero-container,
+            .hero-grid,
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .profile-wrapper {
-                margin-top: 30px;
+            .hero-card {
+                max-width: 550px;
+                margin: auto;
             }
 
-            .learning-grid {
-                grid-template-columns: repeat(2,1fr);
+            .journey-grid,
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: repeat(3,1fr);
+            .nav-links {
+                display: none;
             }
         }
 
-        @media (max-width: 650px) {
+        @media(max-width: 600px) {
 
             nav {
-                padding: 15px 5%;
+                top: 10px;
             }
 
-            nav ul {
-                display: none;
+            .nav-inner {
+                height: 60px;
+            }
+
+            .nav-btn {
+                padding: 9px 13px;
+                font-size: 12px;
             }
 
             .hero {
-                padding: 130px 6% 70px;
+                padding-top: 120px;
             }
 
-            .hero h1 {
+            h1 {
                 letter-spacing: -2px;
             }
 
-            section.content-section {
-                padding: 70px 6%;
+            .hero-text {
+                font-size: 16px;
             }
 
+            section {
+                padding: 75px 0;
+            }
+
+            .focus-grid,
             .skills-grid,
-            .learning-grid {
+            .journey-grid,
+            .projects-grid,
+            .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .stats {
-                margin: 0 6% 50px;
-                padding: 10px;
-            }
-
-            .stat h3 {
-                font-size: 23px;
-            }
-
-            .stat p {
-                font-size: 10px;
-            }
-
-            .profile-card {
-                width: 280px;
-                height: 350px;
-            }
-
-            .floating-card {
-                display: none;
-            }
-
-            .section-heading h2,
-            .cta h2 {
-                font-size: 32px;
+            .contact-info,
+            .contact-form {
+                padding: 27px;
             }
         }
-
     </style>
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div class="background">
-        <div class="blob one"></div>
-        <div class="blob two"></div>
-        <div class="blob three"></div>
-    </div>
+<!-- ================= NAVBAR ================= -->
 
+<nav>
+    <div class="nav-inner">
 
-    <!-- Navigation -->
-    <nav>
+        <a href="#home" class="logo">
+            Rabin Neupane
+        </a>
 
-        <div class="logo">
-            Rabin<span>.</span>
-        </div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
+        <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#learning">Learning</a></li>
+            <li><a href="#journey">Journey</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li>
-                <a href="#contact" class="nav-button">Contact</a>
-            </li>
         </ul>
 
-    </nav>
+        <a href="#contact" class="nav-btn">
+            Let's Talk
+        </a>
+
+    </div>
+</nav>
 
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+<!-- ================= HERO ================= -->
 
-        <div class="hero-container">
+<section class="hero" id="home">
 
-            <div>
+    <div class="container hero-grid">
 
-                <div class="badge">
-                    <span class="dot"></span>
-                    Currently Learning & Growing
+        <div>
+
+            <div class="eyebrow">
+                <span class="dot"></span>
+                Currently Learning & Building
+            </div>
+
+            <h1>
+                Digital Marketing
+                <br>
+                & <span>SEO Learner.</span>
+            </h1>
+
+            <p class="hero-text">
+                Hi, I'm Rabin. I'm learning digital marketing and SEO,
+                exploring how search, content and online strategies can
+                help brands grow in the digital world.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    Explore My Work →
+                </a>
+
+                <a href="#contact" class="btn btn-light">
+                    Get In Touch
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="profile-circle">
+                RN
+            </div>
+
+            <h3>Rabin Neupane</h3>
+
+            <div class="role">
+                Digital Marketing & SEO Learner
+            </div>
+
+            <div class="mini-info">
+
+                <div>
+                    📍 Digital Marketing
                 </div>
 
-                <h1>
-                    Rabin
-                    <span class="gradient-text">
-                        Neupane
-                    </span>
-                </h1>
+                <div>
+                    🔎 Search Engine Optimization
+                </div>
 
-                <h2>
-                    Digital Marketing & SEO Learner
-                </h2>
-
-                <p>
-                    Exploring the world of SEO, digital marketing,
-                    content strategy and online growth. I'm building
-                    my skills through continuous learning, research
-                    and hands-on practice.
-                </p>
-
-                <div class="buttons">
-
-                    <a href="#projects" class="btn primary">
-                        Explore My Work →
-                    </a>
-
-                    <a href="#contact" class="btn outline">
-                        Let's Connect
-                    </a>
-
+                <div>
+                    📈 Learning • Testing • Improving
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- Profile -->
-            <div class="profile-wrapper">
+    </div>
 
-                <div class="profile-card">
+</section>
 
-                    <div class="floating-card float-one">
-                        🔎 SEO
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <div class="section-label">
+                    About Me
+                </div>
+
+                <h2 class="section-title">
+                    Learning how digital growth works.
+                </h2>
+
+                <p>
+                    I'm Rabin Neupane, a Digital Marketing and SEO learner
+                    interested in understanding how businesses can improve
+                    their online presence.
+                </p>
+
+                <p>
+                    My current focus is building practical knowledge through
+                    research, experimentation and small projects while
+                    continuously improving my digital marketing skills.
+                </p>
+
+            </div>
+
+
+            <div class="focus-grid">
+
+                <div class="focus-card">
+
+                    <div class="focus-icon">
+                        🔎
                     </div>
 
-                    <div class="floating-card float-two">
-                        📈 Digital Growth
-                    </div>
-
-                    <div class="profile-circle">
-                        RN
-                    </div>
-
-                    <h3>
-                        Rabin Neupane
-                    </h3>
+                    <h3>SEO</h3>
 
                     <p>
-                        Digital Marketing & SEO
+                        Learning keyword research, on-page SEO and
+                        search visibility.
+                    </p>
+
+                </div>
+
+
+                <div class="focus-card">
+
+                    <div class="focus-icon">
+                        ✍️
+                    </div>
+
+                    <h3>Content</h3>
+
+                    <p>
+                        Exploring content strategies that provide
+                        useful information to audiences.
+                    </p>
+
+                </div>
+
+
+                <div class="focus-card">
+
+                    <div class="focus-icon">
+                        📊
+                    </div>
+
+                    <h3>Analytics</h3>
+
+                    <p>
+                        Learning how data can be used to understand
+                        digital performance.
+                    </p>
+
+                </div>
+
+
+                <div class="focus-card">
+
+                    <div class="focus-icon">
+                        🚀
+                    </div>
+
+                    <h3>Growth</h3>
+
+                    <p>
+                        Exploring practical ways brands can grow
+                        their online presence.
                     </p>
 
                 </div>
@@ -949,346 +905,204 @@
 
         </div>
 
-    </section>
-
-
-    <!-- STATS -->
-    <div class="stats">
-
-        <div class="stat">
-            <h3>SEO</h3>
-            <p>Focus Area</p>
-        </div>
-
-        <div class="stat">
-            <h3>4+</h3>
-            <p>Learning Areas</p>
-        </div>
-
-        <div class="stat">
-            <h3>∞</h3>
-            <p>Curiosity to Learn</p>
-        </div>
-
     </div>
 
+</section>
 
-    <!-- ABOUT -->
-    <section class="content-section" id="about">
 
-        <div class="section-heading">
+<!-- ================= SKILLS ================= -->
 
-            <small>01 / ABOUT ME</small>
+<section id="skills">
 
-            <h2>
-                Learning. Practicing. Growing.
-            </h2>
+    <div class="container">
 
-            <p>
-                A curious learner exploring how digital platforms
-                connect businesses with the right audience.
-            </p>
-
+        <div class="section-label">
+            Skills
         </div>
 
+        <h2 class="section-title">
+            What I'm currently learning
+        </h2>
 
-        <div class="about-grid">
-
-            <div class="about-text">
-
-                <p>
-                    I'm <span class="highlight">Rabin Neupane</span>,
-                    currently learning Digital Marketing and Search
-                    Engine Optimization.
-                </p>
-
-                <p>
-                    My interest lies in understanding how search engines,
-                    websites, content and social platforms work together
-                    to create a stronger online presence.
-                </p>
-
-                <p>
-                    I'm building my knowledge through practical exercises,
-                    research and personal projects, with the goal of
-                    developing strong real-world digital marketing skills.
-                </p>
-
-            </div>
-
-
-            <div class="about-box">
-
-                <h3>
-                    What I'm Focused On
-                </h3>
-
-                <div class="check">
-                    <span>✓</span>
-                    Search Engine Optimization
-                </div>
-
-                <div class="check">
-                    <span>✓</span>
-                    Keyword Research
-                </div>
-
-                <div class="check">
-                    <span>✓</span>
-                    Content Strategy
-                </div>
-
-                <div class="check">
-                    <span>✓</span>
-                    Digital Marketing
-                </div>
-
-                <div class="check">
-                    <span>✓</span>
-                    Social Media Marketing
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-    <section class="content-section" id="skills">
-
-        <div class="section-heading">
-
-            <small>02 / SKILLS</small>
-
-            <h2>
-                Skills I'm Building
-            </h2>
-
-            <p>
-                These are the areas I'm currently studying and
-                developing through practice.
-            </p>
-
-        </div>
+        <p class="section-subtitle">
+            A growing skill set focused on the fundamentals of
+            digital marketing and SEO.
+        </p>
 
 
         <div class="skills-grid">
 
-            <div class="skill-card">
+            <div class="skill">
 
                 <div class="skill-top">
-                    <strong>SEO</strong>
+                    <span>SEO Fundamentals</span>
                     <span>Learning</span>
                 </div>
 
-                <div class="progress">
-                    <div class="progress-bar" style="width: 70%;"></div>
+                <div class="bar">
+                    <span style="width:75%"></span>
                 </div>
 
             </div>
 
 
-            <div class="skill-card">
+            <div class="skill">
 
                 <div class="skill-top">
-                    <strong>Keyword Research</strong>
+                    <span>Keyword Research</span>
                     <span>Learning</span>
                 </div>
 
-                <div class="progress">
-                    <div class="progress-bar" style="width: 65%;"></div>
+                <div class="bar">
+                    <span style="width:70%"></span>
                 </div>
 
             </div>
 
 
-            <div class="skill-card">
+            <div class="skill">
 
                 <div class="skill-top">
-                    <strong>Content Marketing</strong>
+                    <span>Content Marketing</span>
                     <span>Learning</span>
                 </div>
 
-                <div class="progress">
-                    <div class="progress-bar" style="width: 60%;"></div>
+                <div class="bar">
+                    <span style="width:65%"></span>
                 </div>
 
             </div>
 
 
-            <div class="skill-card">
+            <div class="skill">
 
                 <div class="skill-top">
-                    <strong>Social Media Marketing</strong>
+                    <span>Social Media Marketing</span>
                     <span>Learning</span>
                 </div>
 
-                <div class="progress">
-                    <div class="progress-bar" style="width: 55%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-top">
-                    <strong>Google Analytics</strong>
-                    <span>Learning</span>
-                </div>
-
-                <div class="progress">
-                    <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-top">
-                    <strong>Google Search Console</strong>
-                    <span>Learning</span>
-                </div>
-
-                <div class="progress">
-                    <div class="progress-bar" style="width: 55%;"></div>
+                <div class="bar">
+                    <span style="width:65%"></span>
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- LEARNING -->
-    <section class="content-section" id="learning">
+<!-- ================= JOURNEY ================= -->
 
-        <div class="section-heading">
+<section class="journey" id="journey">
 
-            <small>03 / LEARNING JOURNEY</small>
+    <div class="container">
 
-            <h2>
-                What I'm Exploring
-            </h2>
-
+        <div class="section-label">
+            My Journey
         </div>
 
+        <h2 class="section-title">
+            Learning by doing.
+        </h2>
 
-        <div class="learning-grid">
+        <p class="section-subtitle">
+            My approach is simple: learn the fundamentals,
+            practice them and keep improving.
+        </p>
 
-            <div class="learning-card">
 
-                <div class="icon">
-                    🔍
-                </div>
+        <div class="journey-grid">
 
-                <h3>SEO</h3>
+            <div class="journey-card">
+
+                <div class="number">01</div>
+
+                <h3>Learn</h3>
 
                 <p>
-                    Learning on-page SEO, technical SEO,
-                    optimization and search engine fundamentals.
+                    Study digital marketing concepts, SEO techniques,
+                    content strategies and online marketing fundamentals.
                 </p>
 
             </div>
 
 
-            <div class="learning-card">
+            <div class="journey-card">
 
-                <div class="icon">
-                    🎯
-                </div>
+                <div class="number">02</div>
 
-                <h3>Keywords</h3>
+                <h3>Practice</h3>
 
                 <p>
-                    Understanding search intent, keyword research
-                    and how people discover content online.
+                    Apply what I learn through experiments, research
+                    and practical personal projects.
                 </p>
 
             </div>
 
 
-            <div class="learning-card">
+            <div class="journey-card">
 
-                <div class="icon">
-                    ✍️
-                </div>
+                <div class="number">03</div>
 
-                <h3>Content</h3>
+                <h3>Improve</h3>
 
                 <p>
-                    Exploring content planning and strategies
-                    designed around audience needs.
-                </p>
-
-            </div>
-
-
-            <div class="learning-card">
-
-                <div class="icon">
-                    📱
-                </div>
-
-                <h3>Social Media</h3>
-
-                <p>
-                    Learning how brands use social platforms
-                    to communicate and engage with audiences.
+                    Review results, understand what works and continue
+                    developing my skills.
                 </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- PROJECTS -->
-    <section class="content-section" id="projects">
+<!-- ================= PROJECTS ================= -->
 
-        <div class="section-heading">
+<section id="projects">
 
-            <small>04 / PROJECTS</small>
+    <div class="container">
 
-            <h2>
-                Practice & Projects
-            </h2>
-
-            <p>
-                A collection of areas where I'm applying what
-                I'm learning.
-            </p>
-
+        <div class="section-label">
+            Projects
         </div>
 
+        <h2 class="section-title">
+            Things I'm working on.
+        </h2>
 
-        <div class="projects">
+        <p class="section-subtitle">
+            A collection of learning projects and practical experiments
+            as I develop my digital marketing skills.
+        </p>
+
+
+        <div class="projects-grid">
 
             <div class="project">
 
-                <div class="project-number">
-                    PROJECT / 01
+                <div class="project-top">
+                    🔍
                 </div>
 
-                <h3>
-                    SEO Practice
-                </h3>
+                <h3>SEO Research</h3>
 
                 <p>
-                    Practicing keyword research, on-page
-                    optimization and basic SEO techniques
-                    through personal exercises.
+                    Practicing keyword research and understanding
+                    how search intent affects content.
                 </p>
 
                 <div class="tags">
                     <span class="tag">SEO</span>
                     <span class="tag">Keywords</span>
-                    <span class="tag">On-Page</span>
+                    <span class="tag">Research</span>
                 </div>
 
             </div>
@@ -1296,24 +1110,21 @@
 
             <div class="project">
 
-                <div class="project-number">
-                    PROJECT / 02
+                <div class="project-top">
+                    ✍️
                 </div>
 
-                <h3>
-                    Content Research
-                </h3>
+                <h3>Content Strategy</h3>
 
                 <p>
-                    Researching topics, search intent and
-                    content opportunities to understand what
-                    audiences are looking for.
+                    Exploring how useful and targeted content can
+                    support organic search visibility.
                 </p>
 
                 <div class="tags">
-                    <span class="tag">Research</span>
                     <span class="tag">Content</span>
                     <span class="tag">Strategy</span>
+                    <span class="tag">SEO</span>
                 </div>
 
             </div>
@@ -1321,112 +1132,209 @@
 
             <div class="project">
 
-                <div class="project-number">
-                    PROJECT / 03
+                <div class="project-top">
+                    📱
                 </div>
 
-                <h3>
-                    Digital Marketing Practice
-                </h3>
+                <h3>Social Media Study</h3>
 
                 <p>
-                    Exploring different digital marketing
-                    channels and learning how online campaigns
-                    are planned and executed.
+                    Learning how different types of social content
+                    can engage audiences and support brands.
                 </p>
 
                 <div class="tags">
-                    <span class="tag">Marketing</span>
                     <span class="tag">Social Media</span>
-                    <span class="tag">Digital</span>
+                    <span class="tag">Marketing</span>
                 </div>
 
             </div>
 
         </div>
-
-    </section>
-
-
-    <!-- CTA -->
-    <div class="cta">
-
-        <h2>
-            Let's Connect & Learn
-        </h2>
-
-        <p>
-            Interested in digital marketing, SEO or online growth?
-            I'm always open to connecting, learning and sharing ideas.
-        </p>
-
-        <a
-            href="mailto:rabinneupane241@gmail.com"
-            class="btn primary"
-        >
-            Start a Conversation →
-        </a>
 
     </div>
 
+</section>
 
-    <!-- CONTACT -->
-    <section class="content-section" id="contact">
 
-        <div class="section-heading">
+<!-- ================= CONTACT ================= -->
 
-            <small>05 / CONTACT</small>
+<section class="contact" id="contact">
 
-            <h2>
-                Get In Touch
-            </h2>
+    <div class="container">
 
-            <p>
-                Feel free to reach out for a conversation,
-                collaboration or simply to connect.
-            </p>
-
+        <div class="section-label">
+            Contact
         </div>
+
+        <h2 class="section-title">
+            Let's connect.
+        </h2>
+
+        <p class="section-subtitle">
+            Have a question, idea or just want to connect?
+            Send me a message.
+        </p>
 
 
         <div class="contact-grid">
 
-            <a
-                href="mailto:rabinneupane241@gmail.com"
-                class="contact-card"
-            >
 
-                <small>Email</small>
+            <!-- CONTACT INFORMATION -->
 
-                rabinneupane241@gmail.com
+            <div class="contact-info">
 
-            </a>
+                <h3>
+                    Get in touch
+                </h3>
+
+                <p>
+                    I'm always open to learning, connecting and
+                    discussing digital marketing and SEO.
+                </p>
 
 
-            <a
-                href="tel:9860117102"
-                class="contact-card"
-            >
+                <div class="contact-item">
 
-                <small>Phone</small>
+                    <small>Email</small>
 
-                9860117102
+                    <strong>
+                        rabinneupane241@gmail.com
+                    </strong>
 
-            </a>
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>Phone</small>
+
+                    <strong>
+                        9860117102
+                    </strong>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <small>Focus</small>
+
+                    <strong>
+                        Digital Marketing & SEO
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form">
+
+                <form action="#" method="POST">
+
+                    <div class="form-row">
+
+                        <div class="field">
+
+                            <label for="name">
+                                Your Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="What would you like to discuss?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary submit-btn"
+                    >
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
-    <footer>
+<!-- ================= FOOTER ================= -->
 
-        <p>
-            © 2026 Rabin Neupane · All rights reserved.
-        </p>
+<footer>
 
-    </footer>
+    <div class="container">
+
+        © 2026 Rabin Neupane. All rights reserved.
+
+    </div>
+
+</footer>
 
 
 </body>
